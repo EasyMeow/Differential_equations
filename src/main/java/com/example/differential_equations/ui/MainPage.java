@@ -1,10 +1,11 @@
 package com.example.differential_equations.ui;
 
 
-import com.example.differential_equations.entity.LineChart;
+import com.example.differential_equations.entity.Chart;
 import com.example.differential_equations.entity.Equestion;
 import com.github.appreciated.card.Card;
 import com.storedobject.chart.*;
+import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.IntegerField;
@@ -30,7 +31,7 @@ public class MainPage extends VerticalLayout {
     @Autowired
     public MainPage() {
         setSizeFull();
-        setAlignItems(Alignment.BASELINE);
+        setAlignItems(Alignment.CENTER);
         initContent();
     }
 
@@ -43,11 +44,13 @@ public class MainPage extends VerticalLayout {
         cardEditor.setWidth("100%");
         cardGraphSolution = new Card();
         cardGraphSolution.setSizeFull();
+        cardGraphSolution.getContent().setPadding(true);
         cardGraphSolution.setVisible(false);
         cardGraphErrors = new Card();
         cardGraphErrors.setSizeFull();
+        cardGraphErrors.getContent().setPadding(true);
         cardGraphErrors.setVisible(false);
-        HorizontalLayout horizontalLayout = new HorizontalLayout(cardGraphSolution,cardGraphErrors);
+        HorizontalLayout horizontalLayout = new HorizontalLayout(cardGraphSolution, cardGraphErrors);
         horizontalLayout.setAlignItems(Alignment.AUTO);
         horizontalLayout.setPadding(true);
         horizontalLayout.setSpacing(true);
@@ -57,16 +60,19 @@ public class MainPage extends VerticalLayout {
     private void countAndDraw(Equestion equestion) {
         equestion.findSolutionAndError();
 
-        LineChart chartSolution = new LineChart(equestion.getXs(), equestion.getTs());
+        if(cardGraphSolution.getContent()!=null) {
+            cardGraphSolution.getContent().removeAll();
+        }
+        Chart chartSolution = new Chart(equestion.getXs(), equestion.getTs());
         SOChart soChart = chartSolution.getSoChart();
         cardGraphSolution.add(soChart);
         cardGraphSolution.setVisible(true);
 
-        Double[] datax= new Double[equestion.getSteps()];
-        for(int i = 0;i<equestion.getSteps();i++) {
-            datax[i] =(double) i;
+        if(cardGraphErrors.getContent()!=null) {
+            cardGraphErrors.getContent().removeAll();
         }
-        LineChart chartError = new LineChart(equestion.getErrors(), datax);
+
+        Chart chartError = new Chart(equestion.getErrors(), equestion.getSteps(), equestion.getErrorMin(), equestion.getErrorMax());
         SOChart soChartError = chartError.getSoChart();
         cardGraphErrors.add(soChartError);
         cardGraphErrors.setVisible(true);
@@ -79,14 +85,13 @@ public class MainPage extends VerticalLayout {
         private final NumberField xFirst = new NumberField("x(t0)");
         private final IntegerField steps = new IntegerField("Количество шагов");
         private final Button resultButton = new Button("Получить результат");
-        private final Equestion equestion = new Equestion();
+        private Equestion equestion = new Equestion();
         private final Binder<Equestion> binder = new Binder<>(Equestion.class);
         private Consumer<Equestion> action;
 
         public Editor() {
-            equestion.findSolutionAndError();
-
             equestionTextField.setValue("(1+sin(x)+x^2)^(-3)*cos(x)");
+            equestionTextField.setWidthFull();
             binder.forField(equestionTextField)
                     .asRequired()
                     .bind(Equestion::getF, Equestion::setF);
@@ -127,90 +132,36 @@ public class MainPage extends VerticalLayout {
             steps.setMin(1);
             steps.setValue(100);
             steps.setMax(1000);
+            steps.setMinWidth("10%");
             binder.forField(steps)
                     .asRequired()
                     .bind(Equestion::getSteps, Equestion::setSteps);
 
+            resultButton.setMinWidth("10%");
             resultButton.addClickListener(event -> {
+                equestion = new Equestion();
                 if (binder.writeBeanIfValid(equestion)) {
                     action.accept(equestion);
                 }
             });
 
-            HorizontalLayout firstLisne = new HorizontalLayout(equestionTextField, tFirst, tLast);
-            firstLisne.setWidthFull();
-            firstLisne.setPadding(true);
-            HorizontalLayout secondLine = new HorizontalLayout(xFirst, steps, resultButton);
+            setAlignItems(Alignment.AUTO);
+            HorizontalLayout firstLine = new HorizontalLayout(equestionTextField, tFirst, tLast);
+            firstLine.setWidthFull();
+            firstLine.setPadding(true);
+            Div div =new Div();
+            div.setWidthFull();
+            HorizontalLayout secondLine = new HorizontalLayout(div,xFirst, steps, resultButton);
             secondLine.setWidthFull();
             secondLine.setAlignItems(Alignment.BASELINE);
             secondLine.setPadding(true);
 
             setSizeFull();
-            add(firstLisne, secondLine);
+            add(firstLine, secondLine);
         }
 
         public void setAction(Consumer<Equestion> action) {
             this.action = action;
         }
     }
-
-//    public class Graf {
-//
-//        private ApexCharts apexChart;
-//        private XAxis xAxis;
-//
-//        public Graf(Series<Double> pwmSignal1, Series<Double> pwmSignal2, Series<Double> pwmSignal3) {
-//            apexChart = ApexChartsBuilder.get()
-//                    .withChart(ChartBuilder.get()
-//                            .withType(Type.line)
-//                            .withZoom(ZoomBuilder.get()
-//                                    .withEnabled(true)
-//                                    .build())
-//                            .withToolbar(ToolbarBuilder.get()
-//                                    .withShow(true)
-//                                    .build())
-//                            .build())
-//                    .withLegend(LegendBuilder.get()
-//                            .withShow(true)
-//                            .build())
-//                    .withDataLabels(DataLabelsBuilder.get()
-//                            .withEnabled(false)
-//                            .build())
-//                    .withColors("#77B6EA", "#545454")
-//                    .withTooltip(TooltipBuilder.get()
-//                            .withEnabled(false)
-//                            .build())
-//                    .withStroke(StrokeBuilder.get()
-//                            .withCurve(Curve.straight)
-//                            .build())
-//                    .withTitle(TitleSubtitleBuilder.get()
-//                            .withText("График")
-//                            .withAlign(Align.left)
-//                            .build())
-//                    .withGrid(GridBuilder.get()
-//                            .withRow(RowBuilder.get()
-//                                    .withColors("#f3f3f3", "transparent")
-//                                    .withOpacity(0.5)
-//                                    .build())
-//                            .build())
-//                    .withXaxis(XAxisBuilder.get()
-//                            .withFloating(true)
-//                            .build())
-//                    .withYaxis(YAxisBuilder.get()
-//                            .withTitle(TitleBuilder.get()
-//                                    .withText("Measurements")
-//                                    .build())
-//                            .build())
-//                    .withSeries(new Series[] { pwmSignal1, pwmSignal2, pwmSignal3})
-//                    .build();
-//
-//        }
-//
-//        public void updateTheGraf(String[] datesX, float[][] series) {
-//
-//        }
-//
-//    }
-
-
 }
