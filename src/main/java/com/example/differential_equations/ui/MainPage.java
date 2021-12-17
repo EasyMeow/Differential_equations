@@ -4,15 +4,11 @@ package com.example.differential_equations.ui;
 import com.example.differential_equations.entity.Chart;
 import com.example.differential_equations.entity.Equestion;
 import com.github.appreciated.card.Card;
-import com.storedobject.chart.Text;
 import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
-import org.springframework.beans.factory.annotation.Autowired;
-
-
 
 
 @PageTitle("Главная")
@@ -21,7 +17,6 @@ public class MainPage extends VerticalLayout {
     Card cardGraphSolution;
     Card cardGraphErrors;
 
-    @Autowired
     public MainPage() {
         setSizeFull();
         setAlignItems(Alignment.CENTER);
