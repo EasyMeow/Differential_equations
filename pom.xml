@@ -76,9 +76,46 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+<!--            <plugin>-->
+<!--                <groupId>com.github.eirslett</groupId>-->
+<!--                <artifactId>frontend-maven-plugin</artifactId>-->
+<!--                <version>1.9.1</version>-->
+<!--            </plugin>-->
+            <plugin>
+                <groupId>com.github.eirslett</groupId>
+                <artifactId>frontend-maven-plugin</artifactId>
+                <version>1.8.0</version>
+                <executions>
+                    <execution>
+                        <id>install node and npm</id>
+                        <goals>
+                            <goal>install-node-and-npm</goal>
+                        </goals>
+                        <phase>generate-resources</phase>
+                    </execution>
+                </executions>
+                <configuration>
+                    <nodeVersion>v10.16.2</nodeVersion>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.heroku.sdk</groupId>
+                <artifactId>heroku-maven-plugin</artifactId>
+                <version>2.0.13</version>
+                <configuration>
+                    <appName>vaadin-heroku-app</appName>
+                    <processTypes>
+                        <web>java $JAVA_OPTS -jar target/vaadin-heroku-2.0-SNAPSHOT.jar --server.port=$PORT</web>
+                    </processTypes>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
     <repositories>
+<!--        <repository>-->
+<!--            <id>frontend-maven</id>-->
+<!--            <url>com.github.eirslett</url>-->
+<!--        </repository>-->
         <repository>
             <id>jitpack</id>
             <url>https://jitpack.io</url>
