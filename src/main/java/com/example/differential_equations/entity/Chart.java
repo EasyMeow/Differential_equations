@@ -70,6 +70,7 @@ public class Chart {
         lc.setName("Погрешность");
         lc.plotOn(new RectangularCoordinate(xAxis, yAxis));
         lc.setSmoothness(true);
+        lc.setColors(new Color("FF0033"));
         lc.setConnectNullPoints(true);
 
         Toolbox toolbox = new Toolbox();
