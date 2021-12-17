@@ -33,14 +33,18 @@ public class Chart {
         yAxis.getLabel(true);
 
         LineChart lc = new LineChart(this.dataX, this.dataY);
+        lc.setName("Решение");
         lc.plotOn(new RectangularCoordinate(xAxis, yAxis));
         lc.setSmoothness(true);
 
-        soChart.add(lc);
+        Toolbox toolbox = new Toolbox();
+        toolbox.addButton(new Toolbox.Download(), new Toolbox.Zoom());
+
+        soChart.add(lc, toolbox);
     }
 
     // errors chart constructor
-    public Chart(Double[] dataY, Integer dataX,Double errorMin,Double errorMax) {
+    public Chart(Double[] dataY, Integer dataX, Double errorMin, Double errorMax) {
         Double[] dataxArray = new Double[dataX];
         for (int i = 0; i < dataX; i++) {
             dataxArray[i] = (double) i;
@@ -63,11 +67,15 @@ public class Chart {
         yAxis.getLabel(true);
 
         LineChart lc = new LineChart(this.dataX, this.dataY);
+        lc.setName("Погрешность");
         lc.plotOn(new RectangularCoordinate(xAxis, yAxis));
         lc.setSmoothness(true);
         lc.setConnectNullPoints(true);
 
-        soChart.add(lc);
+        Toolbox toolbox = new Toolbox();
+        toolbox.addButton(new Toolbox.Download(), new Toolbox.Zoom());
+
+        soChart.add(lc, toolbox);
     }
 }
 
