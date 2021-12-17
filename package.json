@@ -2,6 +2,7 @@
   "name": "no-name",
   "license": "UNLICENSED",
   "dependencies": {
+    "@google-web-components/google-chart": "^3.0.4",
     "@polymer/iron-a11y-announcer": "3.0.2",
     "@polymer/iron-a11y-keys-behavior": "3.0.1",
     "@polymer/iron-fit-behavior": "3.0.2",
@@ -14,6 +15,7 @@
     "@polymer/iron-overlay-behavior": "3.0.3",
     "@polymer/iron-resizable-behavior": "3.0.1",
     "@polymer/iron-scroll-target-behavior": "3.0.1",
+    "@polymer/paper-ripple": "3.0.2",
     "@polymer/polymer": "3.2.0",
     "@vaadin/vaadin-accordion": "1.2.0",
     "@vaadin/vaadin-app-layout": "2.2.0",
@@ -64,9 +66,13 @@
     "@vaadin/vaadin-usage-statistics": "2.1.0",
     "@webcomponents/shadycss": "1.8.0",
     "@webcomponents/webcomponentsjs": "^2.2.10",
+    "apexcharts": "3.30.0",
     "construct-style-sheets-polyfill": "2.4.16",
+    "echarts": "5.1.2",
     "lit-element": "2.5.1",
-    "lit-html": "1.4.1"
+    "lit-html": "1.4.1",
+    "myscript-math-web": "^5.1.0",
+    "onecolor": "3.1.0"
   },
   "devDependencies": {
     "babel-loader": "8.2.2",
@@ -102,6 +108,7 @@
       "@polymer/iron-overlay-behavior": "3.0.3",
       "@polymer/iron-resizable-behavior": "3.0.1",
       "@polymer/iron-scroll-target-behavior": "3.0.1",
+      "@polymer/paper-ripple": "3.0.2",
       "@polymer/polymer": "3.2.0",
       "@vaadin/vaadin-accordion": "1.2.0",
       "@vaadin/vaadin-app-layout": "2.2.0",
@@ -152,9 +159,12 @@
       "@vaadin/vaadin-usage-statistics": "2.1.0",
       "@webcomponents/shadycss": "1.8.0",
       "@webcomponents/webcomponentsjs": "^2.2.10",
+      "apexcharts": "3.30.0",
       "construct-style-sheets-polyfill": "2.4.16",
+      "echarts": "5.1.2",
       "lit-element": "2.5.1",
-      "lit-html": "1.4.1"
+      "lit-html": "1.4.1",
+      "onecolor": "3.1.0"
     },
     "devDependencies": {
       "babel-loader": "8.2.2",
@@ -176,6 +186,6 @@
       "webpack-dev-server": "3.11.0",
       "webpack-merge": "4.2.2"
     },
-    "hash": "85f57cf67ca41dd15f9ce485922df8e83ea031beb5a4373a2987796223ec6600"
+    "hash": "d927dd434cd9e2ad191ec68684c6a9e3fefd6319db30841da960557a2b484bb7"
   }
 }
