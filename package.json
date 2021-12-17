@@ -66,13 +66,11 @@
     "@vaadin/vaadin-usage-statistics": "2.1.0",
     "@webcomponents/shadycss": "1.8.0",
     "@webcomponents/webcomponentsjs": "^2.2.10",
-    "apexcharts": "3.30.0",
     "construct-style-sheets-polyfill": "2.4.16",
     "echarts": "5.1.2",
     "lit-element": "2.5.1",
     "lit-html": "1.4.1",
-    "myscript-math-web": "^5.1.0",
-    "onecolor": "3.1.0"
+    "myscript-math-web": "^5.1.0"
   },
   "devDependencies": {
     "babel-loader": "8.2.2",
@@ -159,12 +157,10 @@
       "@vaadin/vaadin-usage-statistics": "2.1.0",
       "@webcomponents/shadycss": "1.8.0",
       "@webcomponents/webcomponentsjs": "^2.2.10",
-      "apexcharts": "3.30.0",
       "construct-style-sheets-polyfill": "2.4.16",
       "echarts": "5.1.2",
       "lit-element": "2.5.1",
-      "lit-html": "1.4.1",
-      "onecolor": "3.1.0"
+      "lit-html": "1.4.1"
     },
     "devDependencies": {
       "babel-loader": "8.2.2",
@@ -186,6 +182,6 @@
       "webpack-dev-server": "3.11.0",
       "webpack-merge": "4.2.2"
     },
-    "hash": "d927dd434cd9e2ad191ec68684c6a9e3fefd6319db30841da960557a2b484bb7"
+    "hash": "93633889e8ba2ca286d67387d34bfd6eb857ef27749c79bcf497b2e50bc674e1"
   }
 }
