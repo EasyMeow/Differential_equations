@@ -4,6 +4,8 @@ package com.example.differential_equations.ui;
 import com.example.differential_equations.entity.Chart;
 import com.example.differential_equations.entity.Equestion;
 import com.github.appreciated.card.Card;
+import com.storedobject.chart.Text;
+import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.PageTitle;
@@ -59,7 +61,9 @@ public class MainPage extends VerticalLayout {
         }
 
         Chart chartSolution = new Chart(equestion.getXs(), equestion.getTs());
-        cardGraphSolution.add(chartSolution.getSoChart());
+        Label xN = new Label("xN = " + equestion.getXs()[equestion.getXs().length - 1]);
+        xN.setWidthFull();
+        cardGraphSolution.add(xN,chartSolution.getSoChart());
         cardGraphSolution.setVisible(true);
 
         if(cardGraphErrors.getContent()!=null) {
@@ -67,7 +71,15 @@ public class MainPage extends VerticalLayout {
         }
 
         Chart chartError = new Chart(equestion.getErrors(), equestion.getSteps(), equestion.getErrorMin(), equestion.getErrorMax());
-        cardGraphErrors.add(chartError.getSoChart());
+        Label ePn = new Label("eПN = " + equestion.getErrors()[equestion.getErrors().length - 1]);
+        ePn.setWidthFull();
+        Label eMin = new Label("ErrorMin = " + equestion.getErrorMin());
+        eMin.setWidthFull();
+        Label eMax = new Label("ErrorMax = " + equestion.getErrorMax());
+        eMax.setWidthFull();
+        HorizontalLayout errors = new HorizontalLayout(ePn,eMin,eMax);
+        errors.setWidthFull();
+        cardGraphErrors.add(errors,chartError.getSoChart());
         cardGraphErrors.setVisible(true);
     }
 }

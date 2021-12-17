@@ -20,7 +20,7 @@ public class Chart {
         this.dataX.addAll(Arrays.stream(dataX).collect(Collectors.toList()));
 
         soChart = new SOChart();
-        soChart.setSize("900px", "650px");
+        soChart.setSize("900px", "500px");
 
 
         XAxis xAxis = new XAxis(this.dataX);
@@ -54,7 +54,7 @@ public class Chart {
         this.dataX.addAll(Arrays.stream(dataxArray).collect(Collectors.toList()));
 
         soChart = new SOChart();
-        soChart.setSize("900px", "650px");
+        soChart.setSize("900px", "500px");
 
 
         XAxis xAxis = new XAxis(this.dataX);
