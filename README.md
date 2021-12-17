@@ -7,8 +7,8 @@
 3) You may probably need Node.js to see normalized page in your browser, so download the lastest version.
 
 
-В проекте используются следующие технологии:
+The following technologies are used in the project:
 - Spring Boot
 - Vaadin
 
-Так же для работы приложения была использована библиотека `javaluator` и дополнения с сайта [Vaadin Addons](https://vaadin.com/directory)
+The 'javaluator' library and add-ons from the site [Vaadin Addons](https://vaadin.com/directory) were also used for the application to work. 
