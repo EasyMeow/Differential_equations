@@ -24,12 +24,12 @@ public class Chart {
 
 
         XAxis xAxis = new XAxis(this.dataX);
-        xAxis.setMin(dataX[0]);
-        xAxis.setMax(dataX[dataX.length - 1]);
+        xAxis.setMinAsMinData();
+        xAxis.setMaxAsMaxData();
         xAxis.getLabel(true);
         YAxis yAxis = new YAxis(this.dataY);
-        yAxis.setMin(dataY[0]);
-        yAxis.setMax(dataY[dataY.length - 1]);
+        yAxis.setMinAsMinData();
+        yAxis.setMaxAsMaxData();
         yAxis.getLabel(true);
 
         LineChart lc = new LineChart(this.dataX, this.dataY);
