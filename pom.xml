@@ -142,8 +142,11 @@
                     <plugin>
                         <groupId>com.vaadin</groupId>
                         <artifactId>vaadin-maven-plugin</artifactId>
+                        <version>${vaadin.version}</version>
                         <executions>
                             <execution>
+                                <id>frontend</id>
+                                <phase>compile</phase>
                                 <goals>
                                     <goal>prepare-frontend</goal>
                                     <goal>build-frontend</goal>
@@ -155,7 +158,7 @@
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-war-plugin</artifactId>
                         <configuration>
-                            <warName>timetracker-prod</warName>
+                            <warName>differential-equestion-prod</warName>
                         </configuration>
                     </plugin>
                 </plugins>
