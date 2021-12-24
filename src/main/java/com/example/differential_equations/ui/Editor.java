@@ -96,18 +96,21 @@ public class Editor extends VerticalLayout {
             }
         });
 
-        setAlignItems(Alignment.AUTO);
+        setSizeFull();
+        label.setHeight("10%");
         HorizontalLayout firstLine = new HorizontalLayout(equestionTextField, tFirst, tLast);
+        firstLine.setAlignItems(Alignment.BASELINE);
+        firstLine.setHeight("34%");
         firstLine.setWidthFull();
         firstLine.setPadding(true);
         Div div =new Div();
         div.setWidthFull();
         HorizontalLayout secondLine = new HorizontalLayout(div,xFirst, steps, resultButton);
+        secondLine.setHeight("33%");
         secondLine.setWidthFull();
         secondLine.setAlignItems(Alignment.BASELINE);
         secondLine.setPadding(true);
 
-        setSizeFull();
         add(label, firstLine, secondLine);
     }
 

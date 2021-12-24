@@ -33,8 +33,8 @@ public class MainPage extends VerticalLayout {
         Editor editor = new Editor();
         Card cardEditor = new Card();
         cardEditor.setSizeFull();
-        cardEditor.setMaxHeight("35%");
-        cardEditor.add(editor);
+        cardEditor.setHeight("37%");
+        cardEditor.addComponentAsFirst(editor);
         editor.setAction(this::countAndDraw);
 
         cardGraphSolution = new Card();
@@ -76,7 +76,9 @@ public class MainPage extends VerticalLayout {
         Chart chartSolution = new Chart(equestion.getXs(), equestion.getTs());
         Label xN = new Label("xN = " + equestion.getXs()[equestion.getXs().length - 1]);
         xN.setWidthFull();
-        cardGraphSolution.add(xN,chartSolution.getSoChart());
+        HorizontalLayout xNlayout = new HorizontalLayout(xN);
+        xNlayout.setWidthFull();
+        cardGraphSolution.add(xNlayout,chartSolution.getSoChart());
         cardGraphSolution.setVisible(true);
 
         if(cardGraphErrors.getContent()!=null) {
