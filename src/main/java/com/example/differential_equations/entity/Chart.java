@@ -2,6 +2,8 @@ package com.example.differential_equations.entity;
 
 import com.storedobject.chart.*;
 
+import com.vaadin.flow.component.Component;
+import com.vaadin.flow.component.UI;
 import lombok.Getter;
 
 import java.util.Arrays;
@@ -20,8 +22,12 @@ public class Chart {
         this.dataX.addAll(Arrays.stream(dataX).collect(Collectors.toList()));
 
         soChart = new SOChart();
-        soChart.setSize("900px", "500px");
-
+//        UI.getCurrent().getParent().flatMap(Component::getParent).ifPresent(component -> {
+//            String width = component.getElement().getAttribute("width");
+//            String height = component.getElement().getAttribute("height");
+//            soChart.setSize("calc(" +"var("+ width + ")- 55%)", "calc(" +"var("+ height + ")- 40%)");
+//        });
+        soChart.setSizeFull();
 
         XAxis xAxis = new XAxis(this.dataX);
         xAxis.setMinAsMinData();
@@ -54,8 +60,12 @@ public class Chart {
         this.dataX.addAll(Arrays.stream(dataxArray).collect(Collectors.toList()));
 
         soChart = new SOChart();
-        soChart.setSize("900px", "500px");
-
+//        UI.getCurrent().getParent().flatMap(Component::getParent).ifPresent(component -> {
+//            String width = component.getElement().getAttribute("width");
+//            String height = component.getElement().getAttribute("height");
+//            soChart.setSize("calc(" +"var("+ width + ")- 55%)", "calc(" +"var("+ height + ")- 40%)");
+//        });
+        soChart.setSizeFull();
 
         XAxis xAxis = new XAxis(this.dataX);
         xAxis.setMin(dataxArray[0]);
@@ -79,4 +89,3 @@ public class Chart {
         soChart.add(lc, toolbox);
     }
 }
-
